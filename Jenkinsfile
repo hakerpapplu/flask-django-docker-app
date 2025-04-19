@@ -5,24 +5,20 @@ pipeline {
         stage('Build Flask Image') {
             steps {
                 dir('flask_app') {
-                    script {
-                        docker.build('flask-app')
-                    }
+                    bat 'docker build -t flask-app .'
                 }
             }
         }
         stage('Build Django Image') {
             steps {
                 dir('django_app') {
-                    script {
-                        docker.build('django-app')
-                    }
+                    bat 'docker build -t django-app .'
                 }
             }
         }
         stage('Compose Up') {
             steps {
-                sh 'docker-compose up -d'
+                bat 'docker-compose up -d'
             }
         }
     }

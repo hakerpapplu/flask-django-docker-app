@@ -1,0 +1,10 @@
+<h2>Item List</h2>
+<form method="POST">{% csrf_token %}
+  <input name="name" placeholder="New Item">
+  <input type="submit">
+</form>
+<ul>
+  {% for item in items %}
+    <li>{{ item.name }}</li>
+  {% endfor %}
+</ul>
